@@ -1,4 +1,5 @@
 ## Hi there 👋
+- 🔭 This page is currently under construction. I’ll be releasing some music under the name Indifferent Atoms.
 
 <!--
 **indifferentatoms/indifferentatoms** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
