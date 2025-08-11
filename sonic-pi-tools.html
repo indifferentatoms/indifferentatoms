@@ -38,11 +38,12 @@
   
 <div class="container">
 
-  <p> We've build a number of tools with sonic-pi to help generate &
+  <p> I've build a number of tools with <a
+  href="https://sonic-pi.net/">sonic-pi</a> to help generate &
   improvise music. In this article, I'll give an overview of what they
   do and provide some pointers to demo music that used them.</p>
 
-  <p> In the future we'll be open sourcing each of the tools but they
+  <p> In the future, I'll be open sourcing each of the tools but they
   need a bit of clean up first to remove redundant code and make them
   easier to use.</p>
 
@@ -55,18 +56,17 @@
   <h2> Sonodoro </h2>
 
   <p>This software generates semi-random melodies and basic
-  accompaniment. It also has a TouchOSC interface to allow me to play
-  a sequence of melodies and send a thumbs up or down on my phone. I
-  accumulated scores while listening repeatedly to about 1,000
-  melodies then picked the ~50 melodies I liked the best. I edited
-  them in Ableton Live, modifying each melody and
-  accompaniment by hand.</p>
+  accompaniment. It also has a TouchOSC interface to allow me to listen
+  a stream of melodies and send a like or dislike on my phone. I
+  listened repeatedly to about 1,000 melodies then picked the
+  most-liked ~50 melodies. I edited them in Ableton Live, modifying
+  each melody and accompaniment by hand.</p>
 
-  <p> I have selected two 30 minute albums that can be used as
-  Pomodoro timers for focussed work. So far I have released one track
-  as a single. It's called <a href="assume-good-intent.html">Assume
-  Good Intent and you can listen to it on most streaming
-  platforms.</a></p>
+  <p> From the selected melodies I arranged two 30 minute albums that
+  can be used as Pomodoro timers for focussed work. So far I have
+  released one track as a single. It's called <a
+  href="assume-good-intent.html">Assume Good Intent and you can listen
+  to it on most streaming platforms.</a></p>
 
   <h2> pi-layers </h2>
   
@@ -82,7 +82,71 @@
   
   <p>You can <a
   href="https://soundcloud.com/indifferentatoms/pi-layer-demo">listen
-  to a demo on soundcloud</p>.</p>
+  to a demo on soundcloud</a>.</p>
+
+<h2> isorhythmic </h2>
+
+This tool represents multiple interacting melodies in sonic-pi 
+then live-code / improvise by modifying them in real time. They are a
+form of <a href="https://en.wikipedia.org/wiki/Isorhythm">Isorhythmic
+motet</a>. You can define melodies and rhythms separately and then
+change them independently.</p>
+
+<pre style="font-family: monospace;">
+# Define melodic content for each MIDI voice
+set("melody1", [])
+set("melody2", [:G3, :A3, :G3, :A3, :B3, :A3])
+set("melody3", [:D3, :E3, :D3, :E3])
+
+# Define rhythmic patterns for each MIDI voice
+set("rhythm_pattern1", []) 
+set("rhythm_pattern2", [1, 0.5, 0.5, 0.25, 0.25, 0.5, 0.5, 0.5]) # 4.0
+set("rhythm_pattern3", [2.0, 2.0, 1.5, 2.5]) # 4.0
+</pre>
+
+<p>It also implements some note interval filtering to remove
+  dissonance between notes from multiple interacting melodies.</p>
+
+<p> You can <a
+  href="https://soundcloud.com/indifferentatoms/isorythmic-demo">
+  listen to a demo on soundcloud</a>.</p>
+
+<h2> pi-tracker </h2>
+
+This tool is a multi-track midi recorder / looper that can be
+controlled from a keyboard so you can build a track by improvising
+layer by layer without having to switch to a computer
+keyboard/mouse. Later you can edit the midi in a text based tracker
+representation. This can be edited in a sonic-pi buffer or in a normal
+text file. Here is what a sequence looks like.
+
+<pre style="font-family: monospace;">
+midi_add_seq(0, 2, 
+"S0  G2  D3 V59          
+
+                G3 V32  
+
+S4  A2  E3 V15          
+
+                A3 V45  
+
+S8  B2
+        E3 V45          
+
+
+S12             B3 V42  
+
+    a2          A3 V39  
+
+")
+</pre>
+
+<p>It also implements some note interval filtering to remove
+  dissonance between notes from multiple interacting tracks and sequences.</p>
+
+<p> You can <a
+  href="https://soundcloud.com/indifferentatoms/pi-tracker-demo">
+  listen to a demo on soundcloud</a>.</p>
 
 </div>
 
